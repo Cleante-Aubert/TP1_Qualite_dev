@@ -11,27 +11,26 @@ public class TextBufferTest {
 
     @BeforeEach
     public void init(){
-        textBuffer = new TextBuffer("Test méthode toString");
+        textBuffer = new TextBuffer("Ceci est un test de la methode toString");
     }
 
     @Test
     public void should_return_string_when_create_textBuffer(){
-        TextBuffer TB = new TextBuffer("Salut");
-        String expectTB = "Salut";
+        String expectTB = "Ceci est un test de la methode toString";
 
 
         // Act
-        String textTB = TB.toString();
+        String textTB = textBuffer.toString();
 
         // Assert
-        Assertions.assertEquals(TB, expectTB);
+        Assertions.assertEquals(textTB, expectTB);
 
     }
 
     @Test
     public void should_return_correct_max_when_create_textBuffer_with_string(){
         //ARrange
-        int expectedMax = "voici une chaine de caractères test méthode toString ".length();
+        int expectedMax = "Ceci est un test de la methode toString".length();
 
         //ACt
         int max = textBuffer.maxP();
@@ -75,7 +74,7 @@ public class TextBufferTest {
     public void should_return_trunced_string_when_to_out_of_limit(){
 
         //Arrange
-        int from = "test de la méthode toString".length() -6;
+        int from = "Ceci est un test de la methode toString".length() -6;
         int to = 200;
         String expectedString = "String";
 
@@ -105,7 +104,7 @@ public class TextBufferTest {
         //Arrange
         int from = 12;
         int to = 16;
-        String expectedString="Test méthode toString";
+        String expectedString="Ceci est un  de la methode toString";
 
         //Act
         textBuffer.del(from,to);
@@ -118,9 +117,9 @@ public class TextBufferTest {
     @Test
     public void should_delete_trunced_substring_where_to_out_of_limit(){
         //Arrange
-        int from = "Test de la méthode toString encore".length() -6;
+        int from = "Ceci est un test de la methode toString".length() -6;
         int to = 200;
-        String expectedString = "Test de la méthode toString encore";
+        String expectedString = "Ceci est un test de la methode to";
 
         //Act
         textBuffer.del(from,to);
@@ -134,7 +133,7 @@ public class TextBufferTest {
         //Arrange
         int from = 200;
         int to = 200;
-        String expectedString  = "Test de la méthode toString encore";
+        String expectedString  = "Ceci est un test de la methode toString";
 
         // Act
         textBuffer.del(from,to);
@@ -143,47 +142,69 @@ public class TextBufferTest {
         assertThat(textBuffer.toString(),is(expectedString));
     }
 
-    // Test pour voir si la méthode maxP retourne bien la length
+    // Test pour voir si la méthode del supprime bien tout
     @Test
-    public void _should_return_length(){
+    public void _should_del_all(){
         //Arrange
-        TextBuffer TB = new TextBuffer("Salut");
-        int expectTBLength = 5;
+        int from = 0;
+        int to = 100;
+        String expectedTB = "";
 
         // Act
-        int bufferRes = TB.maxP();
+        textBuffer.del(from,to);
 
         // Assert
-        assertThat(TB,is(bufferRes));
+        assertThat(textBuffer.toString(),is(expectedTB));
     }
 
-    // Test de la méthode "ins" afin de tester l'insertion à la bonne position et retourne le résultat attendu
+
+    // Test d'insertion dans un texte buffer d'un string entier
     @Test
-    public void should_ins_correct_position(){
-        // Arrange
-        TextBuffer TB = new TextBuffer("Salut");
-        String expectedTBins = "Salutt";
-
-        // Act
-        TB.ins("t",6);
-
-        // Assert
-        assertThat(TB,is(expectedTBins));
-    }
-
-    // Test de la méthode "del", cela doit bien supprimer le text en entier
-    @Test
-    public void should_delete_correct_part(){
-        // Arrange
-        TextBuffer TB = new TextBuffer("ceci est un text d'exemple");
+    public void should_ins_string(){
+        //Arrange
+        String expectedString = "etes";
         int from = 1;
-        int to = 27;
+        int to = 5;
+
+        //Act
+        textBuffer.ins("test",2);
+
+        //Assert
+        String stringInserted = textBuffer.substr(from,to);
+        assertThat(stringInserted,is(expectedString));
+    }
+
+    // Test de suppression en valeur négatives
+    @Test
+    public void should_supp_nothing(){
+        // Arrange
+        int from = -2;
+        int to = -1;
+        String expectedString="Ceci est un test de la methode toString";
+
+        //Act
+        textBuffer.del(from,to);
+
+        //Assert
+        assertThat(textBuffer.toString(),is(expectedString));
+
+    }
+
+    // Test de la méthode "substr" sur des valeures négatives
+
+    @Test
+    public void should_return_nothing(){
+        // Arrange
+        String expectedString = "";
+        int from = -2;
+        int to = -1;
 
         // Act
-        TB.del(from,to);
+        String stringTB = textBuffer.substr(from,to);
 
         // Assert
-        assertThat(TB,is(""));
+        assertThat(stringTB,is(expectedString));
+
     }
 
 
