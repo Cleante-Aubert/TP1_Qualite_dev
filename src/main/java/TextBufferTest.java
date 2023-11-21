@@ -2,7 +2,8 @@ import fr.einfolearning.tp2.metiers.TextBuffer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
-
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 public class TextBufferTest {
 
