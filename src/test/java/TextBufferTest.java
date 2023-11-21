@@ -75,7 +75,7 @@ public class TextBufferTest {
     public void should_return_trunced_string_when_to_out_of_limit(){
 
         //Arrange
-        int from = "VOila un test de la méthode toString".length() -6;
+        int from = "test de la méthode toString".length() -6;
         int to = 200;
         String expectedString = "String";
 
@@ -120,7 +120,7 @@ public class TextBufferTest {
         //Arrange
         int from = "Test de la méthode toString encore".length() -6;
         int to = 200;
-        String expectedString = "Ceci est un test de la méthode to";
+        String expectedString = "Test de la méthode toString encore";
 
         //Act
         textBuffer.del(from,to);
@@ -134,17 +134,58 @@ public class TextBufferTest {
         //Arrange
         int from = 200;
         int to = 200;
-        String expectedString  = "Et encore un test de la méthode toString";
+        String expectedString  = "Test de la méthode toString encore";
 
         // Act
         textBuffer.del(from,to);
 
         //Assert
         assertThat(textBuffer.toString(),is(expectedString));
-
-
-
     }
+
+    // Test pour voir si la méthode maxP retourne bien la length
+    @Test
+    public void _should_return_length(){
+        //Arrange
+        TextBuffer TB = new TextBuffer("Salut");
+        int expectTBLength = 5;
+
+        // Act
+        int bufferRes = TB.maxP();
+
+        // Assert
+        assertThat(TB,is(bufferRes));
+    }
+
+    // Test de la méthode "ins" afin de tester l'insertion à la bonne position et retourne le résultat attendu
+    @Test
+    public void should_ins_correct_position(){
+        // Arrange
+        TextBuffer TB = new TextBuffer("Salut");
+        String expectedTBins = "Salutt";
+
+        // Act
+        TB.ins("t",6);
+
+        // Assert
+        assertThat(TB,is(expectedTBins));
+    }
+
+    // Test de la méthode "del", cela doit bien supprimer le text en entier
+    @Test
+    public void should_delete_correct_part(){
+        // Arrange
+        TextBuffer TB = new TextBuffer("ceci est un text d'exemple");
+        int from = 1;
+        int to = 27;
+
+        // Act
+        TB.del(from,to);
+
+        // Assert
+        assertThat(TB,is(""));
+    }
+
 
 
     }
