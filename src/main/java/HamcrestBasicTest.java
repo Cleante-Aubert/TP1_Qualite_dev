@@ -1,4 +1,3 @@
-package com.hamcrest.testing;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
