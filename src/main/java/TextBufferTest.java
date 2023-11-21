@@ -125,7 +125,23 @@ public class TextBufferTest {
         textBuffer.del(from,to);
 
         //Assert
-        assertThat
+        assertThat(textBuffer.toString(),is(expectedString));
+    }
+
+    @Test
+    public void _should_del_nothing(){
+        //Arrange
+        int from = 200;
+        int to = 200;
+        String expectedString  = "Et encore un test de la méthode toString";
+
+        // Act
+        textBuffer.del(from,to);
+
+        //Assert
+        assertThat(textBuffer.toString(),is(expectedString));
+
+
 
     }
 
