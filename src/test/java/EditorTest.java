@@ -1,15 +1,17 @@
 import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
 import fr.einfolearning.tp2.metiers.TextEditor;
+import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-//import org.mockito.Mock;
+import sun.security.krb5.internal.crypto.DesMacCksumType;
 
 import javax.xml.soap.Text;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 
 public class EditorTest {
 
@@ -18,12 +20,34 @@ public class EditorTest {
     public void init(){
         TextBuffer tb = mock(TextBuffer.class);
         EmacsKillRing emacsKillRing = mock(EmacsKillRing.class);
-    }
-
-    @Test
-    public void test_Buffer(){
-        //when();
-
+        TextEditor textEditor = new TextEditor("Bonjour à tous");
     }
 */
+    @Test
+    public void test_Yank() throws IllegalAccessException, EmacsKillRingOverflowException {
+
+        try {
+            TextBuffer tb = mock(TextBuffer.class);
+            EmacsKillRing emacsKillRing = mock(EmacsKillRing.class);
+            TextEditor textEditor = new TextEditor("Bonjour à tous");
+
+            when(emacsKillRing.isEmpty()).thenReturn(false);
+            when(emacsKillRing.currentElt()).thenReturn("Voici un test");
+            when(tb.maxP()).thenReturn(100);
+            textEditor.yank();
+            textEditor.yankPop();
+            verify(emacsKillRing, times(2)).currentElt();
+            verify(tb).del(anyInt(), anyInt());
+            verify(tb, times(2)).ins(eq("Voici un test"), anyInt());
+        }
+        catch (IllegalAccessException e){
+            System.out.println(e.toString());
+        }
+    }
+
+
+
+
+
+
 }
