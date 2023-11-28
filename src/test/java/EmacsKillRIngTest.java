@@ -46,4 +46,39 @@ public class EmacsKillRIngTest {
         assertThat(res,is(expectedString));
 
     }
+
+    @Test
+    void testRotateFwd() {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        killRing.add("Text2");
+        assertEquals("Text1", killRing.currentElt());
+        killRing.rotateFwd();
+        assertEquals("Text2", killRing.currentElt());
+        killRing.rotateFwd();
+        assertEquals("Text1", killRing.currentElt());
+    }
+
+    @Test
+    void testIsEmpty() {
+        EmacsKillRing killRing = new EmacsKillRing();
+        assertTrue(killRing.isEmpty());
+        killRing.add("Text");
+        assertFalse(killRing.isEmpty());
+    }
+
+    @Test
+    void testCurrentElt() {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        assertEquals("Text1", killRing.currentElt());
+    }
+
+    @Test
+    void testToString() {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        killRing.add("Text2");
+        assertEquals("[Text2, Text1]", killRing.toString());
+    }
 }
