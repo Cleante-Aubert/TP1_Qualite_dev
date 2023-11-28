@@ -45,6 +45,16 @@ public class EditorTest {
         }
     }
 
+    @Test
+    public void test_setters_getters(){
+        TextEditor te = new TextEditor("voici un nouveau test");
+        verify(te.setCursor(1),"V");
+        te.setMark(2);
+
+
+
+    }
+
 
 
 

@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.lessThan;
 public class EmacsKillRIngTest {
     private TextBuffer textBuffer;
 
-    /*
+
     @Test
     public void should_throw_emacskill_ringoverflowexception_when_buffer_full(){
         //Arrange
@@ -38,7 +38,7 @@ public class EmacsKillRIngTest {
     public void should_return_correct_string(){
         // Arrange
         EmacsKillRing emacsKillRing = new EmacsKillRing();
-        String expectedString = "";
+        String expectedString = [];
 
         // Act
         String res = emacsKillRing.toString();
@@ -83,5 +83,5 @@ public class EmacsKillRIngTest {
         Assertions.assertEquals("[Text2, Text1]", killRing.toString());
     }
 
-     */
+
 }
