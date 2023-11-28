@@ -7,10 +7,13 @@ import fr.einfolearning.tp2.metiers.EmacsKillRing;
 import fr.einfolearning.tp2.metiers.TextBuffer;
 import fr.einfolearning.tp2.metiers.TextEditor;
 import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
+import org.junit.jupiter.api.TestTemplate;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IllegalAccessException {
+
+        /*
         TextBuffer text = new TextBuffer("Hello-World");
 
         System.out.println("Text Buffer : "+text);
@@ -53,6 +56,12 @@ public class App {
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+
+         */
+        TextEditor testYank = new TextEditor("jsp");
+
+        testYank.yank();
+        testYank.yankPop();
 
 
     }

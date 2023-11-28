@@ -52,7 +52,6 @@ public class EmacsKillRing {
 
     public String toString() {
         return (block.toString());
-
     }
 
 }

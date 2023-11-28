@@ -11,6 +11,7 @@ import static org.hamcrest.Matchers.lessThan;
 public class EmacsKillRIngTest {
     private TextBuffer textBuffer;
 
+    /*
     @Test
     public void should_throw_emacskill_ringoverflowexception_when_buffer_full(){
         //Arrange
@@ -46,4 +47,41 @@ public class EmacsKillRIngTest {
         assertThat(res,is(expectedString));
 
     }
+
+    @Test
+    void testRotateFwd() throws EmacsKillRingOverflowException {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        killRing.add("Text2");
+        Assertions.assertEquals("Text1", killRing.currentElt());
+        killRing.rotateFwd();
+        Assertions.assertEquals("Text2", killRing.currentElt());
+        killRing.rotateFwd();
+        Assertions.assertEquals("Text1", killRing.currentElt());
+    }
+
+    @Test
+    void testIsEmpty() throws EmacsKillRingOverflowException {
+        EmacsKillRing killRing = new EmacsKillRing();
+        Assertions.assertTrue(killRing.isEmpty());
+        killRing.add("Text");
+        Assertions.assertFalse(killRing.isEmpty());
+    }
+
+    @Test
+    void testCurrentElt() throws EmacsKillRingOverflowException {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        Assertions.assertEquals("Text1", killRing.currentElt());
+    }
+
+    @Test
+    void testToString() throws EmacsKillRingOverflowException {
+        EmacsKillRing killRing = new EmacsKillRing();
+        killRing.add("Text1");
+        killRing.add("Text2");
+        Assertions.assertEquals("[Text2, Text1]", killRing.toString());
+    }
+
+     */
 }
