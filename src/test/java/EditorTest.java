@@ -64,6 +64,7 @@ public class EditorTest {
         when(mockEmacsKillRing.currentElt()).thenReturn("Mocked Text");
 
         // Injection du mock dans la classe à tester
+        // Problème private
         textEditor.emacsKillring = mockEmacsKillRing;
 
         // Appel de la méthode à tester
