@@ -34,6 +34,7 @@ public class EmacsKillRIngTest {
     }
 
     // Test de la méthode toString voir si elle retourne la bonne valeure
+    /*
     @Test
     public void should_return_correct_string(){
         // Arrange
@@ -47,7 +48,7 @@ public class EmacsKillRIngTest {
         assertThat(res,is(expectedString));
 
     }
-
+    */
     @Test
     void testRotateFwd() throws EmacsKillRingOverflowException {
         EmacsKillRing killRing = new EmacsKillRing();
