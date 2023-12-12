@@ -4,6 +4,7 @@ import fr.einfolearning.tp2.metiers.TextEditor;
 import fr.einfolearning.tp2.metiers.exceptions.EmacsKillRingOverflowException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.mockito.InOrder;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -91,7 +92,7 @@ public class EditorTest {
     }
 
 
-    /*
+
    // Idée de test question KillRegion
 
     @Test
@@ -101,7 +102,7 @@ public class EditorTest {
         EmacsKillRing mockEmacsKillRing = mock(EmacsKillRing.class);
 
         // Création de l'instance de TextEditor avec les mocks
-        TextEditor textEditor = new TextEditor(mockTextBuffer, mockEmacsKillRing);
+        TextEditor textEditor = new TextEditor("test");
         textEditor.setMark(0); // Marquage d'une position quelconque
         textEditor.setCursor(5); // Position du curseur quelconque
 
@@ -121,7 +122,7 @@ public class EditorTest {
         // Vérification que add est appelé ensuite avec le message récupéré du TextBuffer
         inOrder.verify(mockEmacsKillRing).add("Mocked Text");
     }
-    */
+
 
 
 }
