@@ -38,6 +38,7 @@ public class EditorTest {
             // TextEditor avec le mock
             TextEditor textEditor = new TextEditor("Test text");
 
+
             textEditor.setMark(0);
             textEditor.setCursor(5);
             textEditor.emacsKillring = mockEmacsKillRing;
