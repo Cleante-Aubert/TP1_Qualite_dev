@@ -24,8 +24,8 @@ public class EditorTest {
             textEditor.emacsKillring = mockEmacsKillRing;
 
             textEditor.yank();
-            //verify(mockEmacsKillRing, times(2)).currentElt();
-            verify(tb).del(anyInt(), anyInt());
+
+            verify(mockEmacsKillRing, times(1)).currentElt();
             verify(tb, times(0)).ins(eq("Voici un test"), anyInt());
         }
 
