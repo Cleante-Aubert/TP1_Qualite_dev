@@ -1,1 +1,13 @@
 Voici un test des commandes GIT
+
+git config --global user.email cleante95@gmail.com 
+git clone https://..... # Répertoire à cloner 
+git chheckout <nom_branche> # Pour se positionner dans une branche 
+
+cd ... # Pour se positionner dans le répertoire ou les fichiers ont été modifiés 
+git add <nom fichier>
+git commit -m "Test de commit "
+
+git push 
+
+git status # pour voir si le commit et le push se sont bien passés 
